@@ -1,12 +1,10 @@
 import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 import { MONGO_URI } from './config';
 import { AdminRoute, VendorRoute } from './routes';
 
 const app = express();
-dotenv.config();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,8 +14,8 @@ app.use('/vendor', VendorRoute);
 
 mongoose
   .connect(MONGO_URI)
-  .then((result) => {
-    console.log(result);
+  .then(() => {
+    console.log('DB connected');
   })
   .catch((err) => console.log('error' + err));
 
