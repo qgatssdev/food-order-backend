@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/vendor', CreateVendor);
 router.get('/vendors', GetVendors);
-router.post('/vendor/:id', GetVendorByID);
+router.get('/vendor/:id', GetVendorByID);
 
 router.get('/', (req: Request, res: Response, next: NextFunction) => {
   res.json({
