@@ -110,13 +110,16 @@ export const AddFood = async (
     const vendor = await FindVendor(user._id);
 
     if (vendor !== null) {
+      const files = req.files as [Express.Multer.File];
+      const images = files.map((file: Express.Multer.File) => file.filename)
+
       const createdFood = await Food.create({
         vendorId: vendor._id,
         name: name,
         description: description,
         category: category,
         foodType: foodType,
-        images: ['ss.jpg'],
+        images: images,
         readyTime: readyTime,
         price: price,
         rating: 0,
@@ -139,6 +142,11 @@ export const GetFoods = async (
   const user = req.user;
 
   if (user) {
+    const foods = await Food.find({ vendorId: user._id });
+
+    if (foods !== null) {
+      return res.json(foods);
+    }
   }
   return res.json({ message: 'Food information not found' });
 };
