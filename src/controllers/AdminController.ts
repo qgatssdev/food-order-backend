@@ -30,7 +30,6 @@ export const CreateVendor = async (
   const existingVendor = await FindVendor('', email);
   if (existingVendor !== null)
     return res.json({ message: 'A vendor already exists with this email' });
-    //
 
   const salt = await GenerateSalt();
   const userPassword = await GeneratePassword(password, salt);
