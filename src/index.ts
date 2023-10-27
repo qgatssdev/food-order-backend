@@ -6,6 +6,7 @@ import { AdminRoute, VendorRoute } from './routes';
 import path from 'path'
 
 const app = express();
+//
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
