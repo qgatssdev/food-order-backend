@@ -14,8 +14,6 @@ app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use('/admin', AdminRoute);
 app.use('/vendor', VendorRoute);
 
-//
-
 mongoose
   .connect(MONGO_URI)
   .then(() => {
