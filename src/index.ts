@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import { MONGO_URI } from './config';
 import { AdminRoute, VendorRoute } from './routes';
 import path from 'path'
+//
 
 const app = express();
 
